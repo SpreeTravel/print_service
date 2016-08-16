@@ -32,14 +32,14 @@
 </p>
 
 
+<row>
+  <%= link_to  new_organization_invoice_path(@organization) , class:"btn btn-success" do %>
+      <span class="glyphicon glyphicon-plus"></span> New Invoice
+  <%end%>
+  <%= link_to 'Invoices', organization_invoices_path(@organization), class:"btn btn-success"%>
+  <%= link_to 'Customers',  organization_customers_path(@organization), class:"btn btn-success"  %>
 
-<%= link_to 'New Invoice', "/organizations/#{@organization.id}/invoices/new" %>
-
-
+</row>
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
 
-<div>
-  <%= link_to 'Invoices', organization_invoices_path(@organization)%>
-  <%= link_to 'Customers', organization_customers_path(@organization)%>
-</div>
