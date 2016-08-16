@@ -1,0 +1,45 @@
+
+<h1>Organizations</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Country</th>
+      <th>Currency</th>
+      <th>Time zone</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organizations.each do |organization| %>
+      <tr>
+        <td><%= link_to (image_tag organization.logo.url(:thumb)), organization%></td>
+        <td><%= link_to organization.name, organization %></td>
+        <td><%= organization.website %></td>
+        <td><%= Country.find(organization.country).name %></td>
+        <td><%= organization.currency %></td>
+        <td><%= organization.time_zone %></td>
+        <td>
+          <%= link_to edit_organization_path(organization), class:'btn btn-primary btn-sm ' do  %>
+              <span class="glyphicon glyphicon-pencil"></span>
+          <%end%>
+        </td>
+        <td>
+          <%= link_to  organization, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm' do %>
+              <span class="glyphicon glyphicon-remove"></span>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to new_organization_path, class:"btn btn-success" do %>
+    <span class="glyphicon glyphicon-plus"></span> New Organization
+<%end%>

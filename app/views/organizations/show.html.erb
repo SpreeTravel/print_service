@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Logo:</strong>
+  <%= image_tag @organization.logo.url(:medium) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @organization.website %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= Country.find(@organization.country).name %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @organization.currency %>
+</p>
+
+<p>
+  <strong>Time zone:</strong>
+  <%= @organization.time_zone %>
+</p>
+
+
+
+<%= link_to 'New Invoice', "/organizations/#{@organization.id}/invoices/new" %>
+
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
+
+<div>
+  <%= link_to 'Invoices', organization_invoices_path(@organization)%>
+  <%= link_to 'Customers', organization_customers_path(@organization)%>
+</div>

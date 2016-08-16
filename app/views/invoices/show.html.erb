@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @invoice.number %>
+</p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @invoice.order_number %>
+</p>
+
+<p>
+  <strong>Invoice date:</strong>
+  <%= @invoice.invoice_date %>
+</p>
+
+<p>
+  <strong>Salesperson:</strong>
+  <%= @invoice.salesperson %>
+</p>
+
+<p>
+  <strong>Terms:</strong>
+  <%= @invoice.terms %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @invoice.due_date %>
+</p>
+
+<p>
+  <strong>Line Items:</strong>
+  <%= @line_items.each do |li| %>
+    <%= li.description%>
+  <%end%>
+</p>
+
+
+
+<%= link_to 'Edit', edit_organization_invoice_path(@organization, @invoice) %> |
+<%= link_to 'Back', organization_invoices_path %>

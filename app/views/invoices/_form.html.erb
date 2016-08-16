@@ -1,0 +1,100 @@
+<%= form_for([@organization, @invoice], html: {class:'form-horizontal'}) do |f| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :customer,  class:'control-label col-xs-2' %>
+    <div class="col-xs-4">
+      <%= text_field_tag 'invoice[customer]', @invoice.customer, list: 'customers', class:'form-control' %>
+      <datalist id="customers">
+        <%customers.each do |c|%>
+           <option value="<%= c.name %>">
+        <%end%>
+      </datalist>
+      </div>
+    <%= link_to 'New Customer', new_organization_customer_path %>
+
+  </div>
+
+    <div class="form-group">
+      <%= f.label :number, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.text_field :number, class:'form-control' %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :order_number, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.text_field :order_number, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :invoice_date, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.date_select :invoice_date, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :salesperson, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.text_field :salesperson, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :terms, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.text_field :terms, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :due_date, class:'control-label col-xs-2' %>
+      <div class="col-xs-4">
+        <%= f.date_select :due_date, class:'form-control' %>
+      </div>
+    </div>
+
+    <h3>Line Items</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Unit Price</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        <%= f.fields_for :line_items do |line_items_fields| %>
+          <tr>
+            <td><%= line_items_fields.text_field :product%></td>
+            <td><%= line_items_fields.text_area :description %></td>
+            <td><%= line_items_fields.number_field :amount %></td>
+            <td><%= line_items_fields.text_field :unit_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <%#= link_to "", class:"btn btn-success" do %>
+          <!--<span class="glyphicon glyphicon-plus"></span> New LineItem-->
+      <%#end%>
+    </table>
+
+    <div class="actions">
+      <%= f.submit class:"btn btn-success"  %>
+    </div>
+<% end %>

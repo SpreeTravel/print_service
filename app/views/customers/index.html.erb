@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to 'Show',  organization_customer_path(params[:organization_id], customer) %></td>
+        <td><%= link_to 'Edit', edit_organization_customer_path(params[:organization_id], customer)%></td>
+        <td><%= link_to 'Destroy', organization_customer_path(params[:organization_id], customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_organization_customer_path %>

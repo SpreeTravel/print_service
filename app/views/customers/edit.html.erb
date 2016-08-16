@@ -1,0 +1,6 @@
+<h1>Editing Customer</h1>
+
+<%= render 'form', customer: @customer %>
+
+<%= link_to 'Show', organization_customer_path(params[:organization_id], @customer) %> |
+<%= link_to 'Back', organization_customers_path %>

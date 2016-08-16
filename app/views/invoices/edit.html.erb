@@ -1,0 +1,6 @@
+<h1>Editing Invoice</h1>
+
+<%= render 'form', invoice: @invoice, customers: @customers %>
+
+<%= link_to 'Show', organization_invoice_path(params[:organization_id], @invoice) %> |
+<%= link_to 'Back', organization_invoices_path %>

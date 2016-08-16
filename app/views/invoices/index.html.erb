@@ -1,0 +1,47 @@
+
+<h1>Invoices</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Number</th>
+      <th>Order number</th>
+      <th>Invoice date</th>
+      <th>Salesperson</th>
+      <th>Terms</th>
+      <th>Due date</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.customer %></td>
+        <td><%= link_to invoice.number, organization_invoice_path(params[:organization_id], invoice) %></td>
+        <td><%= invoice.order_number %></td>
+        <td><%= invoice.invoice_date %></td>
+        <td><%= invoice.salesperson %></td>
+        <td><%= invoice.terms %></td>
+        <td><%= invoice.due_date %></td>
+        <td>
+          <%= link_to edit_organization_invoice_path(params[:organization_id], invoice), class:'btn btn-primary btn-sm' do  %>
+              <span class="glyphicon glyphicon-pencil"></span>
+          <%end%>
+        </td>
+        <td>
+          <%= link_to  organization_invoice_path(params[:organization_id], invoice), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-sm' do %>
+              <span class="glyphicon glyphicon-remove"></span>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+ <%= link_to new_organization_invoice_path, class:"btn btn-success" do %>
+    <span class="glyphicon glyphicon-plus"></span> New Invoice
+<%end%>
