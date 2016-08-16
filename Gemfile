@@ -1,5 +1,5 @@
-#source 'https://rubygems.org'
-source 'file:///media/raul/datos'
+source 'https://rubygems.org'
+#source 'file:///media/raul/datos'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'cancancan'
+gem 'rolify'
 gem 'friendly_id'
 gem 'paperclip'
 gem 'carmen-rails'
@@ -56,6 +58,5 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_apps_pages'
   gem 'rails_layout'
-  gem 'carmen-rails'
 end
 
